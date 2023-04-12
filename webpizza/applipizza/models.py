@@ -32,4 +32,4 @@ class Composition(models.Model) :
     def __str__(self) -> str:
         ing = self.ingredient
         piz = self.pizza
-        return ing.__str__() + ' fait partie de la pizza ' + piz.__str__() + ' (auqntite = '+ self.quantite +')'
+        return ing.__str__() + ' fait partie de la pizza ' + piz.__str__() + ' (quantite = '+ self.quantite +')'
