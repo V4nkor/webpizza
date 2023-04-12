@@ -1,14 +1,18 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'applipizza/css/styles.css' %}">
+        <link rel="icon" href="{% static 'applipizza/img/logo.png' %}">
         <title>{% block title %}{% endblock %}</title>
     </head>
     <body>
         <header>
             <nav>
-                <div><a href='/pizzas/'>Les pizzas</a></div>
-                <div><a href='/ingredients/'>Les ingredients</a></div>
+                <a href='/pizzas/'><img src="{% static 'applipizza/img/logo.png' %}"></a>
+                <a href='/pizzas/'>Les pizzas</a>
+                <a href='/ingredients/'>Les ingredients</a>
             </nav>
         </header>
         <main>
