@@ -18,3 +18,18 @@ class Pizza(models.Model) :
 
     def __str__(self) -> str:
         return 'pizza' + self.nomPizza + ' (prix = ' + str(self.prix) + '$)'
+
+class Composition(models.Model) :
+    class Meta :
+        unique_together = ('ingredient','pizza')
+    idComposition = models.AutoField(primary_key = True)
+
+    ingredient = models.ForeignKey(Ingredient, on_delete = models.CASCADE)
+    pizza = models.ForeignKey(Pizza, on_delete = models.CASCADE)
+
+    quantite = models.CharField(max_length = 100, verbose_name = 'la quantite ')
+
+    def __str__(self) -> str:
+        ing = self.ingredient
+        piz = self.pizza
+        return ing.__str__() + ' fait partie de la pizza ' + piz.__str__() + ' (auqntite = '+ self.quantite +')'
