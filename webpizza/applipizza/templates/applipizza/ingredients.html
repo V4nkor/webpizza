@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Les ingredients</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div><a href='/pizzas/'>Les pizzas</a></div>
+                <div><a href='/ingredients/'>Les ingredients</a></div>
+            </nav>
+        </header>
+        <main>
+            <h2>Voici nos {{ ingredients|length }} ingredients</h2>
+            <ul>
+                {% for ing in ingredients %}
+                <li>{{ ing }}</li>
+                {% endfor %}
+            </ul>
+        </main>
+        <footer>
+            Appli Pizza - 2023 - LP PRISM - Mathieu MORGAT
+        </footer>
+    </body>
+</html>
