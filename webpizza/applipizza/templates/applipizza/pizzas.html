@@ -1,26 +1,14 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>Les pizzas</title>
-    </head>
-    <body>
-        <header>
-            <nav>
-                <div><a href='/pizzas/'>Les pizzas</a></div>
-                <div><a href='/ingredients/'>Les ingredients</a></div>
-            </nav>
-        </header>
-        <main>
-            <h2>Voici nos {{ pizzas|length }} pizzas</h2>
-            <ul>
-                {% for piz in pizzas %}
-                <li>{{ piz }}</li>
-                {% endfor %}
-            </ul>
-        </main>
-        <footer>
-            Appli Pizza - 2023 - LP PRISM - Mathieu MORGAT
-        </footer>
-    </body>
-</html>
+{% extends 'applipizza/base.html' %}
+
+{% block title %}
+Les pizza
+{% endblock %}
+
+{% block content %}
+<h2>Voici nos {{ pizzas|length }} pizzas</h2>
+<ul>
+    {% for piz in pizzas %}
+    <li>{{ piz }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

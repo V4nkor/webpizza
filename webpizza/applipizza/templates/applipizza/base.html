@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <div><a href='/pizzas/'>Les pizzas</a></div>
+                <div><a href='/ingredients/'>Les ingredients</a></div>
+            </nav>
+        </header>
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+        <footer>
+            Appli Pizza - 2023 - LP PRISM - Mathieu MORGAT
+        </footer>
+    </body>
+</html>
