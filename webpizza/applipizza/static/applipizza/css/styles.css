@@ -16,17 +16,24 @@ nav {
     background-color: #3bb900;
     overflow: hidden;
 }
-nav img{
+.nav-logo{
     width:40px;
 }
-nav a{
+
+.nav-element, .nav-logo-element{
     float: left;
     background-color: #3bb900;
     color: #000000;
     text-align: center;
     text-decoration: none;
     font-size: 17px;
+}
+.nav-logo-element{
     height:40px;
+}
+.nav-element{
+    padding:10px;
+    height:20px;
 }
 nav a:hover {
     background-color: #0d9b00;
