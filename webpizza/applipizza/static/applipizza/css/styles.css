@@ -10,6 +10,7 @@ footer{
     text-align:center;
     background-color: #71ac6c;
     padding:12px;
+    margin-top:30px;
 }
 
 nav {
@@ -42,4 +43,19 @@ nav a:hover {
 nav a.active {
     background-color: #04AA6D;
     color: rgb(0, 0, 0);
+}
+
+.ingredientsList, .ingredientsList td {
+    border: 1px solid #333;
+    border-collapse: collapse;
+    text-align:center;
+}
+
+.ingredientsList td{
+    padding:4px;
+}
+
+.ingredientsList thead {
+    background-color: #3bb900;
+    color: #000000;
 }

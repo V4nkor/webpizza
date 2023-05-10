@@ -8,7 +8,7 @@ Les pizza
 <h2>Voici nos {{ pizzas|length }} pizzas :</h2>
 <ul>
     {% for piz in pizzas %}
-    <li>{{ piz }}</li>
+    <li>{{ piz }} | <a href="/pizzas/{{piz.idPizza}}/">details sur cette pizza</a></li>
     {% endfor %}
 </ul>
 {% endblock %}

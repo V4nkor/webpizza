@@ -1,0 +1,23 @@
+{% extends 'applipizza/base.html' %}
+
+{% block title %}
+Details d'une pizza
+{% endblock %}
+
+{% block content %}
+<h2>Voici notre pizza :</h2>
+<p>{{pizza}}</p>
+<h2>Les {{ composition|length }} Ingredients de la {{pizza.nomPizza}}</h2>
+<table class="ingredientsList">
+    <thead>
+        <td>Ingredients</td>
+        <td>Quantite</td>
+    </thead>
+    {% for ingredient in composition %}
+    <tr>
+        <td>{{ ingredient.ingredient }}</td>
+        <td>{{ ingredient.quantite }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
