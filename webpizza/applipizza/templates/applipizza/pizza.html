@@ -5,19 +5,23 @@ Details d'une pizza
 {% endblock %}
 
 {% block content %}
-<h2>Voici notre pizza :</h2>
-<p>{{pizza}}</p>
-<h2>Les {{ composition|length }} Ingredients de la {{pizza.nomPizza}}</h2>
-<table class="ingredientsList">
-    <thead>
-        <td>Ingredients</td>
-        <td>Quantite</td>
-    </thead>
-    {% for ingredient in composition %}
-    <tr>
-        <td>{{ ingredient.ingredient }}</td>
-        <td>{{ ingredient.quantite }}</td>
-    </tr>
-    {% endfor %}
-</table>
+    <h2>Voici notre pizza :</h2>
+    <p>{{pizza}}</p>
+    {% if composition|length != 0 %}
+        <h2>Les {{ composition|length }} Ingredients de la {{pizza.nomPizza}}</h2>
+        <table class="ingredientsList">
+            <thead>
+                <td>Ingredients</td>
+                <td>Quantite</td>
+            </thead>
+            {% for ingredient in composition %}
+            <tr>
+                <td>{{ ingredient.ingredient }}</td>
+                <td>{{ ingredient.quantite }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h2>La pizza ne comporte aucun ingredient</h2>
+    {% endif %}
 {% endblock %}
