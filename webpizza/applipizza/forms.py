@@ -33,12 +33,3 @@ class CompositionForm(ModelForm) :
     class Meta :
         model = Composition
         fields = ['ingredient','quantite']
-
-
-#class CompositionForm(forms.Form) :
-#    ingredient = forms.CharField(
-#            label = 'L'ingredient',
-#        )
-#    prix = forms.CharField()(
-#            label = 'Sa quantite',
-#        )

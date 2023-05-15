@@ -24,4 +24,10 @@ Details d'une pizza
     {% else %}
         <h2>La pizza ne comporte aucun ingredient</h2>
     {% endif %}
+    <br>
+    <form action="/pizzas/{{pizza.idPizza}}/addIngredient/" method="post">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Envoyer">
+    </form>
 {% endblock %}

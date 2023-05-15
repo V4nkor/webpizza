@@ -13,13 +13,14 @@ def ingredients(request) :
     return render(request, "applipizza/ingredients.html", {"ingredients" : lesIngredients })
 
 def pizza(request, pizza_id):
+    formulaire = CompositionForm()
     laPizza = Pizza.objects.get(idPizza = pizza_id)
     compo = Composition.objects.filter(pizza = pizza_id)
     listeIngredients = []
     for c in compo :
         ing = Ingredient.objects.get(idIngredient = c.ingredient.idIngredient)
         listeIngredients.append({"nom" : ing.nomIngredient, "qte" : c.quantite})
-    return render(request, "applipizza/pizza.html",{"pizza" : laPizza,"liste" : listeIngredients,"composition" : compo})
+    return render(request, "applipizza/pizza.html",{"pizza" : laPizza,"liste" : listeIngredients,"composition" : compo,"form" : formulaire})
 
 def formulaireCreationIngredient(request):
     formulaire = IngredientForm()
@@ -49,3 +50,28 @@ def creerPizza(request):
         piz.save()
         return render(request,"applipizza/traitementFormulaireCreationPizza.html",{"nom" : nomPiz})
 
+def ajouterIngredientDansPizza(request,pizza_id):
+    formulaire = CompositionForm(request.POST)
+    if formulaire.is_valid():
+        idIng = formulaire.cleaned_data['ingredient']
+        qte = formulaire.cleaned_data['quantite']
+
+        compo = Composition()
+        compo.ingredient = Ingredient.objects.get(idIngredient = idIng)
+        compo.pizza = Pizza.objects.get(idPizza = pizza_id)
+        compo.quantite = qte
+        compo.save()
+
+    formulaire = CompositionForm()
+
+    laPizza = Pizza.objects.get(idPizza = pizza_id)
+
+    compo = Composition.objects.filter(pizza = pizza_id)
+
+    listeIngredients = []
+
+    for c in compo:
+        ing = Ingredient.objects.get(idIngredient = c.ingredient.idIngredient)
+        listeIngredients.append({"nom" : ing.nomIngredient, "qte" : c.quantite})
+
+    return render(request,"applipizza/pizza.html",{"pizza" : laPizza,"liste" : listeIngredients,"form" : formulaire})
