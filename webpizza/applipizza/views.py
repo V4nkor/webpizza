@@ -75,3 +75,9 @@ def ajouterIngredientDansPizza(request,pizza_id):
         listeIngredients.append({"nom" : ing.nomIngredient, "qte" : c.quantite})
 
     return render(request,"applipizza/pizza.html",{"pizza" : laPizza,"liste" : listeIngredients,"form" : formulaire})
+
+def supprimerPizza(request, pizza_id):
+    pizza = Pizza.objects.get(idPizza = pizza_id)
+    pizza.delete()
+    lesPizzas = Pizza.objects.all()
+    return render(request, "applipizza/pizzas.html", {"pizzas" : lesPizzas })

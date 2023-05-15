@@ -8,7 +8,9 @@ Les pizza
 <h2>Voici nos {{ pizzas|length }} pizzas :</h2>
 <ul>
     {% for piz in pizzas %}
-    <li>{{ piz }} | <a href="/pizzas/{{piz.idPizza}}/">details sur cette pizza</a></li>
+    <li>{{ piz }} | <a href="/pizzas/{{piz.idPizza}}/">details</a>
+                    <a href="/pizzas/{{piz.idPizza}}/update">modifier</a>
+                    <a href="/pizzas/{{piz.idPizza}}/delete">supprimer</a></li>
     {% endfor %}
 </ul>
 {% endblock %}

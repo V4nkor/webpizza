@@ -27,5 +27,7 @@ urlpatterns = [
     path('ingredients/create/',views.creerIngredient),
     path('pizzas/add/',views.formulaireCreationPizza),
     path('pizzas/create/',views.creerPizza),
-    path('pizzas/<int:pizza_id>/addIngredient/', views.ajouterIngredientDansPizza)
+    path('pizzas/<int:pizza_id>/addIngredient/', views.ajouterIngredientDansPizza),
+    path('pizzas/<int:pizza_id>/delete/',views.supprimerPizza),
+    
 ]
