@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import ModelForm
-from applipizza.models import Ingredient, Pizza
+from applipizza.models import Ingredient, Pizza, Composition
 
 class IngredientForm(ModelForm) :
     class Meta :
@@ -20,11 +20,25 @@ class PizzaForm(ModelForm) :
         fields = ['nomPizza','prix']
 
 
-#classPizzaForm(forms.Form) :
+#class PizzaForm(forms.Form) :
 #    nomPizza = forms.CharField(
 #            label = 'Nom de cet ingredient',
 #            max_length = 50
 #        )
 #    prix = forms.DecimalField()(
 #            label = 'Prix de cet ingredient',
+#        )
+
+class CompositionForm(ModelForm) :
+    class Meta :
+        model = Composition
+        fields = ['ingredient','quantite']
+
+
+#class CompositionForm(forms.Form) :
+#    ingredient = forms.CharField(
+#            label = 'L'ingredient',
+#        )
+#    prix = forms.CharField()(
+#            label = 'Sa quantite',
 #        )

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from applipizza.models import Pizza, Ingredient, Composition
-from applipizza.forms import IngredientForm, PizzaForm
+from applipizza.forms import IngredientForm, PizzaForm, CompositionForm
 
 # Create your views here.
 def pizzas(request) :
@@ -15,7 +15,11 @@ def ingredients(request) :
 def pizza(request, pizza_id):
     laPizza = Pizza.objects.get(idPizza = pizza_id)
     compo = Composition.objects.filter(pizza = pizza_id)
-    return render(request, "applipizza/pizza.html",{"pizza" : laPizza,"composition" : compo})
+    listeIngredients = []
+    for c in compo :
+        ing = Ingredient.objects.get(idIngredient = c.ingredient.idIngredient)
+        listeIngredients.append({"nom" : ing.nomIngredient, "qte" : c.quantite})
+    return render(request, "applipizza/pizza.html",{"pizza" : laPizza,"liste" : listeIngredients,"composition" : compo})
 
 def formulaireCreationIngredient(request):
     formulaire = IngredientForm()
