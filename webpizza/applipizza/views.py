@@ -4,6 +4,9 @@ from applipizza.models import Pizza, Ingredient, Composition
 from applipizza.forms import IngredientForm, PizzaForm, CompositionForm
 
 # Create your views here.
+def accueil(request):
+    return render(request, "applipizza/accueil.html")
+
 def pizzas(request) :
     lesPizzas = Pizza.objects.all()
     return render(request, "applipizza/pizzas.html", {"pizzas" : lesPizzas } )
@@ -81,3 +84,16 @@ def supprimerPizza(request, pizza_id):
     pizza.delete()
     lesPizzas = Pizza.objects.all()
     return render(request, "applipizza/pizzas.html", {"pizzas" : lesPizzas })
+
+def afficherFormulaireModificationPizza(request,pizza_id):
+    laPizza = Pizza.objects.get(idPizza = pizza_id)
+    formulaire = PizzaForm(instance = laPizza)
+    return render(request,"applipizza/formulaireModificationPizza.html",{"form" : formulaire,"pizza" : laPizza})
+
+def modifierPizza(request, pizza_id):
+    laPizza = Pizza.objects.get(idPizza = pizza_id)
+    formulaire = PizzaForm(request.POST)
+    if formulaire.is_valid():
+        formulaire.save()
+    laPizza = Pizza.objects.get(idPizza = pizza_id)
+    return render(request,"applipizza/traitementFormulaireModificationpizza.html",{"pizza" : laPizza})
