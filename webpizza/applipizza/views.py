@@ -94,6 +94,8 @@ def modifierPizza(request, pizza_id):
     laPizza = Pizza.objects.get(idPizza = pizza_id)
     formulaire = PizzaForm(request.POST)
     if formulaire.is_valid():
-        formulaire.save()
+        laPizza.nomPizza = formulaire.cleaned_data['nomPizza']
+        laPizza.prix = formulaire.cleaned_data['prix']
+        laPizza.save()
     laPizza = Pizza.objects.get(idPizza = pizza_id)
     return render(request,"applipizza/traitementFormulaireModificationpizza.html",{"pizza" : laPizza})
