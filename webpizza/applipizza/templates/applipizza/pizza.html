@@ -13,11 +13,13 @@ Details d'une pizza
             <thead>
                 <td>Ingredients</td>
                 <td>Quantite</td>
+                <td></td>
             </thead>
             {% for ingredient in composition %}
             <tr>
                 <td>{{ ingredient.ingredient }}</td>
                 <td>{{ ingredient.quantite }}</td>
+                <td><a href="/pizzas/{{pizza.idPizza}}/deleteIngredient/{{ligne.idComposition}}"><button class="btn deleteBtn clickable">Supprimer</button></a></td>
             </tr>
             {% endfor %}
         </table>
