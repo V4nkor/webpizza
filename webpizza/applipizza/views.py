@@ -56,13 +56,10 @@ def creerPizza(request):
 def ajouterIngredientDansPizza(request,pizza_id):
     formulaire = CompositionForm(request.POST)
     if formulaire.is_valid():
-        idIng = formulaire.cleaned_data['ingredient']
-        qte = formulaire.cleaned_data['quantite']
-
         compo = Composition()
-        compo.ingredient = Ingredient.objects.get(idIngredient = idIng)
+        compo.ingredient = formulaire.cleaned_data['ingredient']
         compo.pizza = Pizza.objects.get(idPizza = pizza_id)
-        compo.quantite = qte
+        compo.quantite = formulaire.cleaned_data['quantite']
         compo.save()
 
     formulaire = CompositionForm()
