@@ -8,18 +8,18 @@ Details d'une pizza
     <h2>Voici notre pizza :</h2>
     <p>{{pizza}}</p>
     {% if composition|length != 0 %}
-        <h2>Les {{ composition|length }} Ingredients de la {{pizza.nomPizza}}</h2>
+        <h2>Les {{ composition|length }} Ingredients de la {{pizza.nomPizza}} : </h2>
         <table class="elementsList">
             <thead>
                 <td>Ingredients</td>
                 <td>Quantite</td>
-                <td></td>
+                <td>Supression</td>
             </thead>
             {% for ingredient in composition %}
             <tr>
                 <td>{{ ingredient.ingredient }}</td>
                 <td>{{ ingredient.quantite }}</td>
-                <td><a href="/pizzas/{{pizza.idPizza}}/deleteIngredient/{{ligne.idComposition}}"><button class="btn deleteBtn clickable">Supprimer</button></a></td>
+                <td><a href="/pizzas/{{pizza.idPizza}}/deleteIngredient/{{ingredient.idComposition}}"><button class="btn deleteBtn clickable">Supprimer</button></a></td>
             </tr>
             {% endfor %}
         </table>
@@ -27,9 +27,12 @@ Details d'une pizza
         <h2>La pizza ne comporte aucun ingredient</h2>
     {% endif %}
     <br>
-    <form action="/pizzas/{{pizza.idPizza}}/addIngredient/" method="post">
-        {% csrf_token %}
-        {{form}}
-        <input type="submit" value="Envoyer">
-    </form>
+    <h2>Ajouter un Ingredient : </h2>
+    <div class="formDiv">
+        <form action="/pizzas/{{pizza.idPizza}}/addIngredient/" method="post">
+            {% csrf_token %}
+            {{form}}
+            <input class="btn submitBtn clickable" type="submit" value="Envoyer">
+        </form>
+    </div>
 {% endblock %}

@@ -56,6 +56,9 @@ def creerPizza(request):
 def ajouterIngredientDansPizza(request,pizza_id):
     formulaire = CompositionForm(request.POST)
     if formulaire.is_valid():
+        existingCompo = Composition.objects.filter(ingredient_id = formulaire.cleaned_data['ingredient'])
+        if existingCompo :
+            existingCompo.delete()
         compo = Composition()
         compo.ingredient = formulaire.cleaned_data['ingredient']
         compo.pizza = Pizza.objects.get(idPizza = pizza_id)
@@ -65,16 +68,14 @@ def ajouterIngredientDansPizza(request,pizza_id):
     formulaire = CompositionForm()
 
     laPizza = Pizza.objects.get(idPizza = pizza_id)
-
     compo = Composition.objects.filter(pizza = pizza_id)
-
     listeIngredients = []
 
     for c in compo:
         ing = Ingredient.objects.get(idIngredient = c.ingredient.idIngredient)
         listeIngredients.append({"nom" : ing.nomIngredient, "qte" : c.quantite})
 
-    return render(request,"applipizza/pizza.html",{"pizza" : laPizza,"liste" : listeIngredients,"form" : formulaire})
+    return render(request,"applipizza/pizza.html",{"pizza" : laPizza,"liste" : listeIngredients,"composition" : compo,"form" : formulaire})
 
 def supprimerPizza(request, pizza_id):
     pizza = Pizza.objects.get(idPizza = pizza_id)
@@ -116,3 +117,17 @@ def modifierIngredient(request, ingredient_id):
         leIngredient.save()
     leIngredient = Ingredient.objects.get(idIngredient = ingredient_id)
     return render(request,"applipizza/traitementFormulaireModificationingredient.html",{"ingredient" : leIngredient})
+
+def supprimerIngredientDansPizza(request, pizza_id, composition_id):
+    laCompo = Composition.objects.get(idComposition = composition_id)
+    laCompo.delete()
+    laPizza = Pizza.objects.get(idPizza = pizza_id)
+    compo = Composition.objects.filter(pizza = pizza_id)
+
+    formulaire = CompositionForm()
+    listeIngredients = []
+
+    for c in compo :
+        ing = Ingredient.objects.get(idIngredient = c.ingredient.idIngredient)
+        listeIngredients.append({"nom" : ing.nomIngredient, "qte" : c.quantite})
+    return render(request, "applipizza/pizza.html",{"pizza" : laPizza,"liste" : listeIngredients,"composition" : compo,"form" : formulaire})
