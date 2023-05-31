@@ -99,3 +99,23 @@ def modifierPizza(request, pizza_id):
         laPizza.save()
     laPizza = Pizza.objects.get(idPizza = pizza_id)
     return render(request,"applipizza/traitementFormulaireModificationpizza.html",{"pizza" : laPizza})
+
+def supprimerIngredient(request, ingredient_id):
+    ingredient = Ingredient.objects.get(idIngredient = ingredient_id)
+    ingredient.delete()
+    lesIngredients = Ingredient.objects.all()
+    return render(request, "applipizza/ingredients.html", {"ingredients" : lesIngredients })
+
+def afficherFormulaireModificationIngredient(request,ingredient_id):
+    leIngredient = Ingredient.objects.get(idIngredient = ingredient_id)
+    formulaire = IngredientForm(instance = leIngredient)
+    return render(request,"applipizza/formulaireModificationIngredient.html",{"form" : formulaire,"ingredient" : leIngredient})
+
+def modifierIngredient(request, ingredient_id):
+    leIngredient = Ingredient.objects.get(idIngredient = ingredient_id)
+    formulaire = IngredientForm(request.POST)
+    if formulaire.is_valid():
+        leIngredient.nomIngredient = formulaire.cleaned_data['nomIngredient']
+        leIngredient.save()
+    leIngredient = Ingredient.objects.get(idIngredient = ingredient_id)
+    return render(request,"applipizza/traitementFormulaireModificationingredient.html",{"ingredient" : leIngredient})

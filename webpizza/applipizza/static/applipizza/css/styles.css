@@ -1,70 +1,152 @@
-html, body{
-    padding: 0;
-    margin: 0;
-}
+/** General section */
 
-html{
-    height: 100%;
-}
+    html, body{
+        padding: 0;
+        margin: 0;
+    }
 
-body{
-    min-height: 100%;
-}
+    html{
+        height: 100%;
+    }
 
-main{
-    margin-left:20px;
-}
+    body{
+        min-height: 100%;
+    }
 
-footer{
-    text-align:center;
-    background-color: #71ac6c;
-    padding:12px;
-    margin-top:30px;
-}
+    main{
+        margin-left:20px;
+    }
 
-nav {
-    background-color: #3bb900;
-    overflow: hidden;
-}
-.nav-logo{
-    width:40px;
-}
+    footer{
+        text-align:center;
+        background-color: #71ac6c;
+        padding:12px;
+        margin-top:30px;
+    }
 
-.nav-element, .nav-logo-element{
-    float: left;
-    background-color: #3bb900;
-    color: #000000;
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
-}
-.nav-logo-element{
-    height:40px;
-}
-.nav-element{
-    padding:10px;
-    height:20px;
-}
-nav a:hover {
-    background-color: #0d9b00;
-    color: black;
-}
-nav a.active {
-    background-color: #04AA6D;
-    color: rgb(0, 0, 0);
-}
+    .clickable:hover{
+        cursor:pointer;
+    }
 
-.ingredientsList, .ingredientsList td {
-    border: 1px solid #333;
-    border-collapse: collapse;
-    text-align:center;
-}
+/* End of general section */
 
-.ingredientsList td{
-    padding:4px;
-}
+/** Nav section */
 
-.ingredientsList thead {
-    background-color: #3bb900;
-    color: #000000;
-}
+    nav {
+        background-color: #3bb900;
+        overflow: hidden;
+    }
+    .nav-logo{
+        width:40px;
+    }
+
+    .nav-element, .nav-logo-element{
+        float: left;
+        background-color: #3bb900;
+        color: #000000;
+        text-align: center;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    .nav-logo-element{
+        height:40px;
+    }
+    .nav-element{
+        padding:10px;
+        height:20px;
+    }
+    nav a:hover {
+        background-color: #0d9b00;
+        color: black;
+    }
+    nav a.active {
+        background-color: #04AA6D;
+        color: rgb(0, 0, 0);
+    }
+
+/* End of nav section */
+
+/** ElementList  section */
+
+    .elementsList, .elementsList td {
+        border: 1px solid #333;
+        border-collapse: collapse;
+        text-align:center;
+    }
+
+    .elementsList td{
+        padding:4px;
+    }
+
+    .elementsList thead {
+        background-color: #3bb900;
+        color: #000000;
+    }
+
+/** Element grid section */
+
+    .elementGrid{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 40px;
+        grid-auto-rows: minmax(100px, auto);
+        margin-right:20px;
+    }
+
+    .elementDiv{
+        text-align: center;
+        margin-top:15px;
+        background-color: rgb(235, 235, 235);
+        border:solid black 1px;
+        padding:10px;
+    }
+
+    .elementImage{
+        max-width: 200px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+/* End of element grid section */
+
+/** Button section */
+
+    .btn{
+        border-radius: 15%;
+        padding:5px;
+        border: solid black 1px;
+    }
+
+    .detailsBtn{
+        background-color: rgb(126, 197, 255);
+        
+    }
+    .modifBtn{
+        background-color: rgb(126, 197, 255);
+    }
+    .deleteBtn{
+        background-color: rgb(255, 63, 63);
+    }
+
+    .submitBtn{
+        background-color: #3bb900;
+    }
+
+/* End of Button section */
+
+/** Form section */
+
+    .formDiv{
+        margin-left :auto;
+        margin-right:auto;
+        width: fit-content;
+        background-color: rgb(235, 235, 235);
+        border:solid black 1px;
+        padding:20px;
+    }
+
+    .formDiv input{
+        margin-top:10px;
+    }
+
+/* End of Form section */

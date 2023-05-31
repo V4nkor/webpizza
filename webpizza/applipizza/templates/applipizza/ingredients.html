@@ -1,4 +1,5 @@
 {% extends 'applipizza/base.html' %}
+{% load static %}
 
 {% block title %}
 Les ingredients
@@ -6,9 +7,15 @@ Les ingredients
 
 {% block content %}
 <h2>Voici nos {{ ingredients|length }} ingredients :</h2>
-<ul>
+<div class="elementGrid">
     {% for ing in ingredients %}
-    <li>{{ ing }}</li>
+        <div class="elementDiv">
+            <img class="elementImage" src="{% static 'applipizza/img/ingredient_default.png' %}">
+            <h4>{{ ing }}</h4>
+            <a href="/ingredients/{{ing.idIngredient}}/update"><button class="btn modifBtn clickable">modifier</button></a>
+            <a href="/ingredients/{{ing.idIngredient}}/delete"><button class="btn deleteBtn clickable">supprimer</button></a>
+        </div>
     {% endfor %}
-</ul>
+</div>
+
 {% endblock %}
