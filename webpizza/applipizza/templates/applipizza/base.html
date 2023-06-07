@@ -17,7 +17,7 @@
                     <a class="nav-element" href='/ingredients/'>Les ingredients</a>
                     <a class="nav-element" href='/ingredients/add/'>Creer un ingredient</a>
                     <div class="nav-right" id="logout">
-                        Bienvenue, {{user}}
+                        <span id="welcome">Bienvenue, {{user}}</span>
                         <a class="nav-element" href="{% url 'logout' %}">deconnexion</a>
                     </div>
                 {% else %}

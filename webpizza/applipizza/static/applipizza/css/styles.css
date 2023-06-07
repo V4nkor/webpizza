@@ -70,8 +70,12 @@
     #login .nav-element{
         background-color: #0a7700;
     }
-    #logout{
+    #logout .nav-element{
         background-color: red;
+    }
+    #welcome{
+        float:left;
+        padding:15px;
     }
 
 /* End of nav section */

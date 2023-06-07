@@ -6,11 +6,16 @@ Creation d'une pizza
 
 {% block content %}
 <h2>Creation d'une Pizza :</h2>
-<div class="formDiv">
-    <form action="/pizzas/create/" method="post">
-        {% csrf_token %}
-        {{ form.as_div}}
-        <input class="btn submitBtn clickable" type="submit" value="Envoyer">
-    </form>
-</div>
+{% if user.is_authenticated %}
+    <div class="formDiv">
+        <form action="/pizzas/create/" method="post">
+            {% csrf_token %}
+            {{ form.as_div}}
+            <input class="btn submitBtn clickable" type="submit" value="Envoyer">
+        </form>
+    </div>
+{% else %}
+    <p>Vous n'avez pas le droit d'acceder a cette page</p>
+{% endif %}
+
 {% endblock %}

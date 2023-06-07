@@ -12,8 +12,11 @@ Les ingredients
         <div class="elementDiv">
             <img class="elementImage" src="{% static 'applipizza/img/ingredient_default.png' %}">
             <h4>{{ ing }}</h4>
-            <a href="/ingredients/{{ing.idIngredient}}/update"><button class="btn modifBtn clickable">Modifier</button></a>
-            <a href="/ingredients/{{ing.idIngredient}}/delete"><button class="btn deleteBtn clickable">Supprimer</button></a>
+            {% if user.is_authenticated %}
+                <a href="/ingredients/{{ing.idIngredient}}/update"><button class="btn modifBtn clickable">Modifier</button></a>
+                <a href="/ingredients/{{ing.idIngredient}}/delete"><button class="btn deleteBtn clickable">Supprimer</button></a>
+            {% endif %}
+            
         </div>
     {% endfor %}
 </div>

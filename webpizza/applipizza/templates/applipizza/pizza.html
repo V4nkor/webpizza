@@ -13,26 +13,33 @@ Details d'une pizza
             <thead>
                 <td>Ingredients</td>
                 <td>Quantite</td>
-                <td>Supression</td>
+                {% if user.is_authenticated %}
+                    <td>Supression</td>
+                {% endif %}
             </thead>
             {% for ingredient in composition %}
             <tr>
                 <td>{{ ingredient.ingredient }}</td>
                 <td>{{ ingredient.quantite }}</td>
-                <td><a href="/pizzas/{{pizza.idPizza}}/deleteIngredient/{{ingredient.idComposition}}"><button class="btn deleteBtn clickable">Supprimer</button></a></td>
+                {% if user.is_authenticated %}
+                    <td><a href="/pizzas/{{pizza.idPizza}}/deleteIngredient/{{ingredient.idComposition}}"><button class="btn deleteBtn clickable">Supprimer</button></a></td>
+                {% endif %}
             </tr>
             {% endfor %}
         </table>
     {% else %}
         <h2>La pizza ne comporte aucun ingredient</h2>
     {% endif %}
-    <br>
-    <h2>Ajouter un Ingredient : </h2>
-    <div class="formDiv">
-        <form action="/pizzas/{{pizza.idPizza}}/addIngredient/" method="post">
-            {% csrf_token %}
-            {{form}}
-            <input class="btn submitBtn clickable" type="submit" value="Envoyer">
-        </form>
-    </div>
+    {% if user.is_authenticated %}
+        <br>
+        <h2>Ajouter un Ingredient : </h2>
+        <div class="formDiv">
+            <form action="/pizzas/{{pizza.idPizza}}/addIngredient/" method="post">
+                {% csrf_token %}
+                {{form}}
+                <input class="btn submitBtn clickable" type="submit" value="Envoyer">
+            </form>
+        </div>           
+    {% endif %}
+    
 {% endblock %}

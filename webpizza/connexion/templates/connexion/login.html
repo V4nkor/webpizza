@@ -1,0 +1,39 @@
+{% extends 'applipizza/base.html' %}
+{% block titre %}
+    connexion
+{% endblock %}
+
+{% block contenu %}
+    <div>
+        <form id="form_login" method="post">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                <p class="alert alert-danger">{{ error }}</p>
+                {% endfor %}
+                <table>
+                    {% for field in form %}
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            {% endif %}
+        </form>
+    </div>
+
+    <div>
+        <small>
+            Pas encore inscrit ?
+            <a href="">
+                S'inscrire
+            </a>
+            <br>
+            Mot de passe Oublie ?
+            <a href="">
+                Renouveler mon mot de passe
+            </a>
+        </small>
+    </div>
+{% endblock %}

@@ -4,7 +4,7 @@ from django.urls import path
 from applipizza import views
 
 urlpatterns = [
-    path('', views.accueil),
+    path('', views.accueil, name = 'accueil'),
     path('pizzas/', views.pizzas),
     path('pizzas/<int:pizza_id>/', views.pizza),
     path('pizzas/add/',views.formulaireCreationPizza),
