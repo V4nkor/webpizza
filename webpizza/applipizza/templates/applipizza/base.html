@@ -10,11 +10,24 @@
     <body>
         <header>
             <nav>
-                <a class="nav-logo-element" href='/'><img class="nav-logo" src="{% static 'applipizza/img/logo.png' %}"></a>
-                <a class="nav-element" href='/pizzas/'>Les pizzas</a>
-                <a class="nav-element" href='/pizzas/add/'>Creer une pizza</a>
-                <a class="nav-element" href='/ingredients/'>Les ingredients</a>
-                <a class="nav-element" href='/ingredients/add/'>Creer un ingredient</a>
+                {% if user.is_authenticated %}
+                    <a class="nav-logo-element" href='/'><img class="nav-logo" src="{% static 'applipizza/img/logo.png' %}"></a>
+                    <a class="nav-element" href='/pizzas/'>Les pizzas</a>
+                    <a class="nav-element" href='/pizzas/add/'>Creer une pizza</a>
+                    <a class="nav-element" href='/ingredients/'>Les ingredients</a>
+                    <a class="nav-element" href='/ingredients/add/'>Creer un ingredient</a>
+                    <div class="nav-right" id="logout">
+                        Bienvenue, {{user}}
+                        <a class="nav-element" href="{% url 'logout' %}">deconnexion</a>
+                    </div>
+                {% else %}
+                    <a class="nav-logo-element" href='/'><img class="nav-logo" src="{% static 'applipizza/img/logo.png' %}"></a>
+                    <a class="nav-element" href='/pizzas/'>Les pizzas</a>
+                    <a class="nav-element" href='/ingredients/'>Les ingredients</a>
+                    <div class="nav-right" id="login">
+                        <a class="nav-element" href="{% url 'login' %}">connexion</a>
+                    </div>
+                {% endif %}
             </nav>
         </header>
         <main>

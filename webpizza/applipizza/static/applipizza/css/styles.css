@@ -35,9 +35,10 @@
     nav {
         background-color: #3bb900;
         overflow: hidden;
+        height:50px;
     }
     .nav-logo{
-        width:40px;
+        width:50px;
     }
 
     .nav-element, .nav-logo-element{
@@ -49,10 +50,10 @@
         font-size: 17px;
     }
     .nav-logo-element{
-        height:40px;
+        height:50px;
     }
     .nav-element{
-        padding:10px;
+        padding:15px;
         height:20px;
     }
     nav a:hover {
@@ -62,6 +63,15 @@
     nav a.active {
         background-color: #04AA6D;
         color: rgb(0, 0, 0);
+    }
+    .nav-right{
+        float:right;
+    }
+    #login .nav-element{
+        background-color: #0a7700;
+    }
+    #logout{
+        background-color: red;
     }
 
 /* End of nav section */
